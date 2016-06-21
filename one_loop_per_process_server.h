@@ -22,7 +22,7 @@ public:
     void handle_signal(int sig) {
         pid_t pid;
         while ((pid = waitpid(-1, NULL, 0)) > 0) {
-             
+            
         }
     }
 

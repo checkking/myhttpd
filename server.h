@@ -3,7 +3,7 @@
 // Base http server class
 // 
 // Author: checkking (checkking at foxmail dot com)
-// Date: 2016-06-1
+// Date: 2016-06-18
 #ifndef CHECKKING_MYHTTPD_SERVER_H
 #define CHECKKING_MYHTTPD_SERVER_H
 
