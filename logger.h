@@ -14,7 +14,7 @@ namespace myhttpd {
 
 #define FILE_PATH_NAME_LEN 250
 #define MOUDULE_NAME_LEN 50
-#define LOG_BUFFER_SIZE 1024 * 1024 * 4
+#define LOG_BUFFER_SIZE 1024 * 4
 
 typedef enum Level {
     DEBUG = 1,
@@ -30,11 +30,28 @@ public:
         _logfile_name[0] = '\0';
     }
     virtual ~Logger() {
-    
     }
     virtual bool init(const char* file_path, const Level& log_level);
-    virtual void finalize();
-    virtual void log(LEVEL level, const char* logformat, ...);
+    virtual void log(const Level& level, const char* logformat, ...);
+    bool check_level(const Level& level) {
+        return level >= _level;
+    }
+    const char* level2string(const Level& level) {
+        switch (level) {
+            case DEBUG:
+                return "DEBUG";
+            case TRACE:
+                return "TRACE";
+            case NOTICE:
+                return "NOTICE";
+            case WARNNING:
+                return "WARNNING";
+            case FATAL:
+                return "FATAL";
+            default:
+                return "UNKNOW";
+        }
+    }
 
 procted:
     Level _level;
@@ -42,6 +59,7 @@ procted:
     char _logfile_name[FILE_PATH_NAME_LEN];
 
 };
+
 } // namespace myhttpd
 } // namespace checkking
 #endif
